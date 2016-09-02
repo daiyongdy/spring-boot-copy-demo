@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
 Implementation-Title: sprint-boot-copy-demo Maven Webapp
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: daiyong
 Implementation-Vendor-Id: com.hbdiy.sb
-Build-Jdk: 1.8.0_60
-Implementation-URL: http://maven.apache.org
+Build-Jdk: 1.7.0_67
+Built-By: daiyong
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://maven.apache.org
 

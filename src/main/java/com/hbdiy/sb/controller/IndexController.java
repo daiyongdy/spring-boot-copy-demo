@@ -32,5 +32,10 @@ public class IndexController {
 		return "index";
 	}
 	
+	@RequestMapping("/index2")
+	public String pageBak() {
+		return "index2";
+	}
+	
 
 }

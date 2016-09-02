@@ -13,9 +13,12 @@ package com.hbdiy.sb.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+
+import com.hbdiy.sb.interceptor.LoginInterceptor;
 
 /**
  * <b>类名称：</b>HbdiyWebMvcConfig <br/>
@@ -52,5 +55,14 @@ public class HbdiyWebMvcConfig extends WebMvcConfigurerAdapter{
 		registry.viewResolver(viewResolver);
 		// FDY Auto-generated method stub
 		super.configureViewResolvers(registry);
+	}
+
+	/**
+	 * 配置拦截器
+	 * @author daiyong
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/*");
 	}
 }
