@@ -18,8 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.hbdiy.sb.model.User;
 import com.hbdiy.sb.service.UserService;
+import com.hbdiy.sb.util.redis.RedisUtil;
 
 /**
  * <b>类名称：</b>UserController <br/>
@@ -90,6 +92,14 @@ public class UserController {
 		List<User> users = this.userService.selectByPage(page, rows);
 		model.addAttribute("users", users);
 		return "/user/list";
+	}
+	
+	@RequestMapping("/redis")
+	@ResponseBody
+	public String redis() {
+		User user = this.userService.selectByMybatis("0");
+		RedisUtil.set("aa", JSON.toJSONString(user));
+		return "redis success!";
 	}
 	
 }	
