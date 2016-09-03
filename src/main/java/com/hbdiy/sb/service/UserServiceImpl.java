@@ -14,11 +14,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.omg.CORBA.UserException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hbdiy.sb.model.User;
+import com.hbdiy.sb.model.UserExample;
 
 /**
  * <b>类名称：</b>UserServiceImpl <br/>
@@ -31,7 +33,7 @@ import com.hbdiy.sb.model.User;
  */
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl extends BaseService implements UserService{
 	
 	@Resource(name="primaryJdbcTemplate")
 	private JdbcTemplate primaryJdbcTemplate;
@@ -88,6 +90,12 @@ public class UserServiceImpl implements UserService{
 		user.setUserId((String)map.get("userId"));
 		user.setUsername((String)map.get("username"));
 		user.setPassword((String)map.get("password"));
+		return user;
+	}
+	
+	@Override
+	public User selectByMybatis(String id) {
+		User user = super.commDAO.init(User.class).selectByPrimaryKey(id);
 		return user;
 	}
 

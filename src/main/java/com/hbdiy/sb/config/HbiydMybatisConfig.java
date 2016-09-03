@@ -54,7 +54,7 @@ public class HbiydMybatisConfig implements TransactionManagementConfigurer{
 	private DataSource readDataSource;
 
 	@Bean(name="primarySqlSessionFactory")
-	public SqlSessionFactory setPrimarySqlSessionFactory() {
+	public SqlSessionFactory getPrimarySqlSessionFactory() {
 		SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
 		bean.setDataSource(primaryDataSource);
 		setCommonSqlSessionFactory(bean);
@@ -67,7 +67,7 @@ public class HbiydMybatisConfig implements TransactionManagementConfigurer{
 		}
 	}
 	@Bean(name="readSqlSessionFactory")
-	public SqlSessionFactory setreadSqlSessionFactory() {
+	public SqlSessionFactory getReadSqlSessionFactory() {
 		SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
 		bean.setDataSource(readDataSource);
 		setCommonSqlSessionFactory(bean);
@@ -121,7 +121,7 @@ public class HbiydMybatisConfig implements TransactionManagementConfigurer{
 	 */
 	@Bean(name="primarySqlSessionTemplate")
 	public SqlSessionTemplate setPrimarySqlSessionTemplate() {
-		SqlSessionTemplate template = new SqlSessionTemplate((SqlSessionFactory) SpringContextUtil.getBean("primarySqlSessionFactory"));
+		SqlSessionTemplate template = new SqlSessionTemplate(this.getPrimarySqlSessionFactory());
 		return template;
 	}
 	
@@ -131,7 +131,7 @@ public class HbiydMybatisConfig implements TransactionManagementConfigurer{
 	 */
 	@Bean(name="readSqlSessionTemplate")
 	public SqlSessionTemplate setReadSqlSessionTemplate() {
-		SqlSessionTemplate template = new SqlSessionTemplate((SqlSessionFactory) SpringContextUtil.getBean("readSqlSessionFactory"));
+		SqlSessionTemplate template = new SqlSessionTemplate(this.getReadSqlSessionFactory());
 		return template;
 	}
 	

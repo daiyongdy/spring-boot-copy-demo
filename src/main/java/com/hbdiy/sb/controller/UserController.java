@@ -72,4 +72,11 @@ public class UserController {
 		return "/user/show";
 	}
 	
+	@RequestMapping("/get2")
+	public String get2(String id, Model model) {
+		User user = this.userService.selectByMybatis(id);
+		model.addAttribute("user", user);
+		return "/user/show";
+	}
+	
 }	

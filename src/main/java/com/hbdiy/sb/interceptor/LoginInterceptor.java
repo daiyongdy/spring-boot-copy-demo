@@ -37,7 +37,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 		
 		System.out.println("登录拦截");
 		
-		return false;
+		return true;
 	}
 
 	/**

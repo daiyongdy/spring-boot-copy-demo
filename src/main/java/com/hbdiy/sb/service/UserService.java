@@ -24,6 +24,8 @@ import com.hbdiy.sb.model.User;
 
 public interface UserService {
 
+	/****************jdbctemplate**********************/
+	
 	public int addByTemplate(User user);
 	
 	public int deleteByTemplate(String id);
@@ -32,4 +34,7 @@ public interface UserService {
 	
 	public User selectByTemplate(String id);
 	
+	
+	/****************mybatis**********************/
+	public User selectByMybatis(String id);
 }
