@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- spring boot 默认配置 不需要改 -->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    
+    <!-- 开发环境 -->
+    <include resource="log-dev.xml"/>
+    
+    <!-- 生产环境  -->
+    <include resource="log-prod.xml"/>
+    
+</configuration>

@@ -10,6 +10,7 @@
 
 package com.hbdiy.sb.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -97,6 +98,15 @@ public class UserServiceImpl extends BaseService implements UserService{
 	public User selectByMybatis(String id) {
 		User user = super.commDAO.init(User.class).selectByPrimaryKey(id);
 		return user;
+	}
+
+	/**
+	 * @author daiyong
+	 */
+	@Override
+	public List<User> selectByPage(int page, int rows) {
+		List<User> result = super.commDAO.init(User.class).selectByPage(page, rows, null);
+		return result;
 	}
 
 }

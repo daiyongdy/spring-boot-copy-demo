@@ -10,6 +10,8 @@
 
 package com.hbdiy.sb.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,6 +79,17 @@ public class UserController {
 		User user = this.userService.selectByMybatis(id);
 		model.addAttribute("user", user);
 		return "/user/show";
+	}
+	
+	/** 
+	 * 测试读写分离与分页插件
+	 * @author daiyong
+	 */
+	@RequestMapping("/getByPage")
+	public String getByPage(Model model, int page, int rows) {
+		List<User> users = this.userService.selectByPage(page, rows);
+		model.addAttribute("users", users);
+		return "/user/list";
 	}
 	
 }	

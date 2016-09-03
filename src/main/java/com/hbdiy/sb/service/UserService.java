@@ -10,6 +10,8 @@
 
 package com.hbdiy.sb.service;
 
+import java.util.List;
+
 import com.hbdiy.sb.model.User;
 
 /**
@@ -37,4 +39,6 @@ public interface UserService {
 	
 	/****************mybatis**********************/
 	public User selectByMybatis(String id);
+	
+	public List<User> selectByPage(int page, int rows);
 }
