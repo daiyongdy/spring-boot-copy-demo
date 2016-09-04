@@ -20,6 +20,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hbdiy.sb.annotation.HbdiyLog;
 import com.hbdiy.sb.model.User;
 import com.hbdiy.sb.model.UserExample;
 
@@ -104,6 +105,7 @@ public class UserServiceImpl extends BaseService implements UserService{
 	 * @author daiyong
 	 */
 	@Override
+	@HbdiyLog
 	public List<User> selectByPage(int page, int rows) {
 		List<User> result = super.commDAO.init(User.class).selectByPage(page, rows, null);
 		return result;
