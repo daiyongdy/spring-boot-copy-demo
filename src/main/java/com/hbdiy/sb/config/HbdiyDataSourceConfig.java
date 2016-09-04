@@ -31,7 +31,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * <b>版本信息：</b>v1.0.0<br/>
  */
 
-@Configuration
+@Configuration	//相当于xml配置文件
 public class HbdiyDataSourceConfig {
 	/**
 	 * Logger for this class

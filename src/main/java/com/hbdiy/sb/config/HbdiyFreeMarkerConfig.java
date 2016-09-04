@@ -23,7 +23,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import com.hbdiy.sb.util.spring.SpringContextUtil;
 
 /**
- * <b>类名称：</b>HbdiyFreeMarkerConfig <br/>
+ * <b>类名称：</b>HbdiyFreeMarkerConfig javaConfig<br/>
  * <b>类描述：</b><br/>
  * <b>创建人：</b>daiyong<br/>
  * <b>修改人：</b><br/>

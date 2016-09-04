@@ -87,6 +87,12 @@
 			<version>1.4.0.RELEASE</version>
 		</dependency>
 
+		<!-- 健康监控 关闭等-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 
 	</dependencies>
 	<build>
