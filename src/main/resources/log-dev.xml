@@ -1,0 +1,48 @@
+<springProfile name="dev">
+	<!-- appender -->
+	<appender name="dailyRollingFileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>d:/app-dev.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>rest-demo.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.ibatis">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.hbdiy">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.ibatis.common.jdbc.SimpleDataSource">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.ibatis.common.jdbc.ScriptRunner">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Connection">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Statement">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.PreparedStatement">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.ResultSet">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.hbdiy.sb" level="DEBUG">
+		<appender-ref ref="dailyRollingFileAppender" />
+	</logger>
+</springProfile>

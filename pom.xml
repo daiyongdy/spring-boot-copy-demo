@@ -26,19 +26,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 
 			<!-- 刪除tomcat -->
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
+			<!-- <exclusions> <exclusion> <groupId>org.springframework.boot</groupId> 
+				<artifactId>spring-boot-starter-tomcat</artifactId> </exclusion> </exclusions> -->
 		</dependency>
 
 		<!-- 啟用jetty -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jetty</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-jetty</artifactId> 
+			</dependency> -->
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -54,7 +48,7 @@
 		</dependency>
 
 		<!-- 数据库jdbc -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 			<version>1.4.0.RELEASE</version>
@@ -66,12 +60,39 @@
 			<version>5.1.8</version>
 		</dependency>
 
-		mybatis 依赖
-		<dependency>clear
+		<!-- mybatis 依赖 -->
+		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.1.1</version>
-		</dependency> -->
+		</dependency>
+
+		<!-- github 分页插件 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>3.7.6</version>
+		</dependency>
+
+		<!-- redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<!-- aop -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>1.4.0.RELEASE</version>
+		</dependency>
+
+		<!-- 健康监控 关闭等-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 
 	</dependencies>
 	<build>

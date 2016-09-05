@@ -10,14 +10,20 @@
 
 package com.hbdiy.sb.config;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
+import com.hbdiy.sb.util.spring.SpringContextUtil;
+
 /**
- * <b>类名称：</b>HbdiyFreeMarkerConfig <br/>
+ * <b>类名称：</b>HbdiyFreeMarkerConfig javaConfig<br/>
  * <b>类描述：</b><br/>
  * <b>创建人：</b>daiyong<br/>
  * <b>修改人：</b><br/>
@@ -36,8 +42,20 @@ public class HbdiyFreeMarkerConfig {
 		
 		logger.debug("HbdiyFreeMarkerConfig init...");
 		
+		//定义模板路径
 		FreeMarkerConfigurer configure = new FreeMarkerConfigurer();
-		configure.setTemplateLoaderPaths("/WEB-INF/page");
+		configure.setTemplateLoaderPaths("/WEB-INF/page", "/WEB-INF/page2");
+		
+		//自定义组件
+		Map<String, Object> variables = new HashMap<String, Object>();
+		variables.put("stringDirective", SpringContextUtil.getBean("stringDirective"));
+		configure.setFreemarkerVariables(variables);
+		
+		//配置
+		Properties settings = new Properties();
+		settings.setProperty("template_update_delay", "0");
+		configure.setFreemarkerSettings(settings);
+		
 		return configure;
 	}
 	
