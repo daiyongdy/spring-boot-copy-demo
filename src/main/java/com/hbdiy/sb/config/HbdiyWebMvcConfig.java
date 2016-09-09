@@ -13,12 +13,19 @@ package com.hbdiy.sb.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import com.hbdiy.sb.interceptor.LoginInterceptor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <b>类名称：</b>HbdiyWebMvcConfig <br/>
@@ -31,38 +38,43 @@ import com.hbdiy.sb.interceptor.LoginInterceptor;
  */
 
 @Configuration
-public class HbdiyWebMvcConfig extends WebMvcConfigurerAdapter{
-	
-	private static final Logger logger = LoggerFactory.getLogger(HbdiyWebMvcConfig.class);
-	
-	/**
-	 * @author daiyong
-	 */
-	@Override
-	public void configureViewResolvers(ViewResolverRegistry registry) {
-		
-		logger.debug("HbdiyWebMvcConfig init...");
-		
-		FreeMarkerViewResolver viewResolver = new FreeMarkerViewResolver();
-		viewResolver.setCache(false);
-		viewResolver.setSuffix(".ftl");
-		viewResolver.setContentType("text/html;charset=UTF-8");
-		viewResolver.setRequestContextAttribute("request");
-		viewResolver.setExposeSpringMacroHelpers(true);
-		viewResolver.setExposeRequestAttributes(true);
-		viewResolver.setExposeSessionAttributes(true);
-		
-		registry.viewResolver(viewResolver);
-		// FDY Auto-generated method stub
-		super.configureViewResolvers(registry);
-	}
+public class HbdiyWebMvcConfig extends WebMvcConfigurerAdapter {
 
-	/**
-	 * 配置拦截器
-	 * @author daiyong
-	 */
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");
-	}
+    private static final Logger logger = LoggerFactory.getLogger(HbdiyWebMvcConfig.class);
+
+    /**
+     * @author daiyong
+     */
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+
+        logger.debug("HbdiyWebMvcConfig init...");
+
+        FreeMarkerViewResolver viewResolver = new FreeMarkerViewResolver();
+        viewResolver.setCache(false);
+        viewResolver.setSuffix(".ftl");
+        viewResolver.setContentType("text/html;charset=UTF-8");
+        viewResolver.setRequestContextAttribute("request");
+        viewResolver.setExposeSpringMacroHelpers(true);
+        viewResolver.setExposeRequestAttributes(true);
+        viewResolver.setExposeSessionAttributes(true);
+
+        registry.viewResolver(viewResolver);
+        // FDY Auto-generated method stub
+        super.configureViewResolvers(registry);
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        super.addResourceHandlers(registry);
+    }
+
+    /**
+     * 配置拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");
+    }
 }

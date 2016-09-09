@@ -12,6 +12,7 @@ package com.hbdiy.sb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * <b>类名称：</b>SpringBootStartApplication <br/>
@@ -24,6 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@ServletComponentScan
 public class SpringBootStartApplication {
 	
 	public static void main(String[] args) {

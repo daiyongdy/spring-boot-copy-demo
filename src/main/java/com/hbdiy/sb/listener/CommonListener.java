@@ -12,6 +12,7 @@ package com.hbdiy.sb.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
 /**
  * <b>类名称：</b>CommonListener <br/>
@@ -22,7 +23,7 @@ import javax.servlet.ServletContextListener;
  * <b>修改备注：</b><br/>
  * <b>版本信息：</b>v1.0.0<br/>
  */
-
+@WebListener
 public class CommonListener implements ServletContextListener{
 
 	/**

@@ -34,29 +34,30 @@ import com.hbdiy.sb.util.spring.SpringContextUtil;
 
 @Configuration
 public class HbdiyFreeMarkerConfig {
-	
-	private static final Logger logger = LoggerFactory.getLogger(HbdiyFreeMarkerConfig.class);
-	
-	@Bean
-	public FreeMarkerConfigurer hbdiyFreeMarkerConfigurer() {
-		
-		logger.debug("HbdiyFreeMarkerConfig init...");
-		
-		//定义模板路径
-		FreeMarkerConfigurer configure = new FreeMarkerConfigurer();
-		configure.setTemplateLoaderPaths("/WEB-INF/page", "/WEB-INF/page2");
-		
-		//自定义组件
-		Map<String, Object> variables = new HashMap<String, Object>();
-		variables.put("stringDirective", SpringContextUtil.getBean("stringDirective"));
-		configure.setFreemarkerVariables(variables);
-		
-		//配置
-		Properties settings = new Properties();
-		settings.setProperty("template_update_delay", "0");
-		configure.setFreemarkerSettings(settings);
-		
-		return configure;
-	}
-	
+
+    private static final Logger logger = LoggerFactory.getLogger(HbdiyFreeMarkerConfig.class);
+
+    @Bean
+    public FreeMarkerConfigurer hbdiyFreeMarkerConfigurer() {
+
+        logger.debug("HbdiyFreeMarkerConfig init...");
+
+        //定义模板路径
+        FreeMarkerConfigurer configure = new FreeMarkerConfigurer();
+        configure.setTemplateLoaderPaths("classpath:/pages/");
+        configure.setPreferFileSystemAccess(false);
+        configure.setDefaultEncoding("UTF-8");
+        //自定义组件
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put("stringDirective", SpringContextUtil.getBean("stringDirective"));
+        configure.setFreemarkerVariables(variables);
+
+        //配置
+        Properties settings = new Properties();
+        settings.setProperty("template_update_delay", "0");
+        configure.setFreemarkerSettings(settings);
+
+        return configure;
+    }
+
 }

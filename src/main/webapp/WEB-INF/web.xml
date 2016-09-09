@@ -5,8 +5,9 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   
-  <listener>
-  	<listener-class>com.hbdiy.sb.listener.CommonListener</listener-class>
-  </listener>
+  <servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>*.html</url-pattern>
+  </servlet-mapping>
   
 </web-app>

@@ -35,7 +35,7 @@ public class HbdiyTomcatConfig {
 		TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
 //		tomcat.setContextPath("/spring-boot-copy-demo");
 		tomcat.setContextPath("");
-		tomcat.setPort(80);
+		tomcat.setPort(8088);
 		tomcat.setUriEncoding(Charset.forName("UTF-8"));
         return tomcat;
 	}
