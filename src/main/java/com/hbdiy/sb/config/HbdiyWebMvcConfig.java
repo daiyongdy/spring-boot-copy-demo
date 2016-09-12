@@ -10,6 +10,7 @@
 
 package com.hbdiy.sb.config;
 
+import com.hbdiy.sb.interceptor.LoginInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -22,10 +23,10 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import com.hbdiy.sb.interceptor.LoginInterceptor;
-
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * <b>类名称：</b>HbdiyWebMvcConfig <br/>
@@ -58,10 +59,22 @@ public class HbdiyWebMvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setExposeSpringMacroHelpers(true);
         viewResolver.setExposeRequestAttributes(true);
         viewResolver.setExposeSessionAttributes(true);
-
+        viewResolver.setExposePathVariables(true);
+        viewResolver.setViewClass(com.hbdiy.sb.config.MyFreeMakerView.class);
         registry.viewResolver(viewResolver);
+        registry.order(10);
         // FDY Auto-generated method stub
         super.configureViewResolvers(registry);
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter();
+        List<MediaType> supportedMediaTypes = new ArrayList<>();
+        supportedMediaTypes.add(MediaType.TEXT_HTML);
+        stringHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
+        stringHttpMessageConverter.setDefaultCharset(StandardCharsets.UTF_8);
+        converters.add(stringHttpMessageConverter);
     }
 
     @Override
